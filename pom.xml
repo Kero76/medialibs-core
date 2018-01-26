@@ -7,7 +7,7 @@
     <groupId>fr.nicolasgille.medialibs</groupId>
     <artifactId>core</artifactId>
     <version>1.0</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <developers>
         <developer>
@@ -42,8 +42,13 @@
         <java.source.version>1.8</java.source.version>
         <java.target.version>1.8</java.target.version>
 
-        <springboot.version>1.5.9.RELEASE</springboot.version>
+        <!-- Used to deploy on my personal maven repos-->
+        <myMavenRepo.write.url>https://mymavenrepo.com/repo/ztAExXHt1cTFxOfvb0Pz/</myMavenRepo.write.url>
 
+        <springboot.version>1.5.9.RELEASE</springboot.version>
+        <assertj.version>3.9.0</assertj.version>
+        <mysql-connector-java.version>6.0.6</mysql-connector-java.version>
+        <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
     </properties>
 
 
@@ -65,6 +70,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector-java.version}</version>
             <scope>runtime</scope>
         </dependency>
 
@@ -72,6 +78,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <version>${springboot.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -82,11 +89,41 @@
         </dependency>
     </dependencies>
 
+    <!-- Distribution management -->
+    <distributionManagement>
+        <repository>
+            <id>myMavenRepo.write</id>
+            <url>${myMavenRepo.write.url}</url>
+        </repository>
+    </distributionManagement>
+
+    <!-- Build tasks -->
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${springboot.version}</version>
+                <configuration>
+                    <classifier>exec</classifier>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven-jar-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>exec</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>exec</classifier>
+                            <forceCreation>true</forceCreation>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
