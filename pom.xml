@@ -33,6 +33,7 @@
         <module>media</module>
         <module>user</module>
         <module>stock</module>
+        <module>loan</module>
     </modules>
 
     <!-- Properties definitions -->
