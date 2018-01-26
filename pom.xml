@@ -32,6 +32,7 @@
     <modules>
         <module>media</module>
         <module>user</module>
+        <module>stock</module>
     </modules>
 
     <!-- Properties definitions -->
