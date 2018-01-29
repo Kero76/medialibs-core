@@ -24,8 +24,19 @@ import javax.transaction.Transactional;
 
 /**
  * @since MediaLibs Core 1.0
- * @version 1.0
+ * @version 1.1
  */
 @Transactional
 public interface StockRepository extends JpaRepository<Stock, Long> {
+
+    /**
+     * Find the stock by his media id.
+     *
+     * @param mediaId
+     *  Unique media id to find stock.
+     * @return
+     *  The stock associate with the media identifier.
+     * @since 1.1
+     */
+    Stock findByMediaId(long mediaId);
 }
