@@ -24,8 +24,19 @@ import javax.transaction.Transactional;
 
 /**
  * @since MediaLibs Core 1.0
- * @since 1.0
+ * @version 1.1
  */
 @Transactional
 public interface UserRepository extends JpaRepository<User, Long> {
+
+    /**
+     * Find a user by email.
+     *
+     * @param email
+     *  Email if the user search on system.
+     * @return
+     *  The user associate to the email or null if not found on system.
+     * @since 1.1
+     */
+    User findByEmail(String email);
 }

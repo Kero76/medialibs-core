@@ -67,11 +67,14 @@ public class Media {
 
     /**
      * The editor of the media (it the same thing for the label records in music)
+     *
      * @since 1.0
      */
     private String editor;
 
     /**
+     * Support for the media.
+     *
      * @since 1.0
      */
     @Enumerated(EnumType.STRING)

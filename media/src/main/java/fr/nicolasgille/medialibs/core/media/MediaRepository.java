@@ -21,12 +21,26 @@ package fr.nicolasgille.medialibs.core.media;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import javax.transaction.Transactional;
+import java.util.Calendar;
 
 /**
  *
  * @since Medialibs Core 1.0
- * @version 1.0
+ * @version 1.1
  */
 @Transactional
 public interface MediaRepository extends JpaRepository<Media, Long> {
+
+    /**
+     * Find the media by name and release date.
+     *
+     * @param name
+     *  Name of the media.
+     * @param releaseDate
+     *  Release date of the media.
+     * @return
+     *  The instance of media.
+     * @since 1.1
+     */
+    Media findByNameAndReleaseDate(String name, Calendar releaseDate);
 }
