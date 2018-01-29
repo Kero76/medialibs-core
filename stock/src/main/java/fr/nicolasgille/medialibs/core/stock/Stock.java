@@ -22,7 +22,7 @@ import javax.persistence.*;
 
 /**
  * @since MediaLibs Core 1.0
- * @version 1.0
+ * @version 1.1
  */
 @Entity
 public class Stock {
@@ -96,5 +96,27 @@ public class Stock {
 
     public void setCurrentStock(int currentStock) {
         this.currentStock = currentStock;
+    }
+
+    /**
+     * Check if the stock is fill.
+     *
+     * @return
+     *  True if the stock is fill.
+     * @sinc 1.1
+     */
+    public boolean isFill() {
+        return this.currentStock == this.initialStock;
+    }
+
+    /**
+     * Check if the stock is empty.
+     *
+     * @return
+     *  True if the stock is empty.
+     * @since 1.1
+     */
+    public boolean isEmpty() {
+        return this.currentStock == 0;
     }
 }

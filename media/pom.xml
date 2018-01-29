@@ -12,18 +12,5 @@
 
     <groupId>fr.nicolasgille.medialibs</groupId>
     <artifactId>core.media</artifactId>
-    <version>1.0</version>
-
-    <properties>
-        <nv-i18n.version>1.22</nv-i18n.version>
-    </properties>
-
-    <dependencies>
-        <!-- Add enum to respect ISO 639-1 about code language -->
-        <dependency>
-            <groupId>com.neovisionaries</groupId>
-            <artifactId>nv-i18n</artifactId>
-            <version>${nv-i18n.version}</version>
-        </dependency>
-    </dependencies>
+    <version>1.1-SNAPSHOT</version>
 </project>
