@@ -22,7 +22,20 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * @since MediaLibs Core 1.0
- * @version 1.0
+ * @version 1.1
  */
 public interface LoanRepository extends JpaRepository<Loan, Long> {
+
+    /**
+     * Return loan by borrower and media id.
+     *
+     * @param borrowerId
+     *  Borrower identifier.
+     * @param mediaId
+     *  Media identifier.
+     * @return
+     *  The loan corresponding to the media and the borrower.
+     * @since 1.1
+     */
+    Loan findByBorrowerIdAndMediaId(long borrowerId, long mediaId);
 }
