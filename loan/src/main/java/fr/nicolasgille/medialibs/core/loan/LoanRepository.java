@@ -19,11 +19,17 @@
 package fr.nicolasgille.medialibs.core.loan;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import javax.transaction.Transactional;
 
 /**
+ *
  * @since MediaLibs Core 1.0
- * @version 1.1
+ * @version 1.1.1
  */
+@Repository
+@Transactional
 public interface LoanRepository extends JpaRepository<Loan, Long> {
 
     /**
