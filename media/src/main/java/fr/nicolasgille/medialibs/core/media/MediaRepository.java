@@ -19,6 +19,7 @@
 package fr.nicolasgille.medialibs.core.media;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 import java.util.Calendar;
@@ -26,8 +27,9 @@ import java.util.Calendar;
 /**
  *
  * @since Medialibs Core 1.0
- * @version 1.1
+ * @version 1.1.1
  */
+@Repository
 @Transactional
 public interface MediaRepository extends JpaRepository<Media, Long> {
 

@@ -12,5 +12,5 @@
 
     <groupId>fr.nicolasgille.medialibs</groupId>
     <artifactId>core.user</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.1.1-SNAPSHOT</version>
 </project>
