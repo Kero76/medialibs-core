@@ -16,19 +16,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package fr.nicolasgille.medialibs.core.user;
+package fr.nicolasgille.medialibs.core.advertiser;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import javax.transaction.Transactional;
 
 /**
- * The definition of the roles are the following :
- *  - GUEST_ROLE : It can be only advertiser media on Medialibs.
- *  - ADMIN_ROLE : It can be advertiser media, manage stocks and medias on MediaLibs.
- *  - SUPERVISOR_ROLE : It can be advertiser media, manage stocks, medias and users on MediaLibs.
  *
  * @since MediaLibs Core 1.0
- * @since 1.0
+ * @version 1.1.1
  */
-public enum Role {
-    GUEST_ROLE,
-    ADMIN_ROLE,
-    SUPERVISOR_ROLE;
+@Repository
+@Transactional
+public interface AdvertRepository extends JpaRepository<Advert, Long> {
 }
