@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package fr.nicolasgille.medialibs.core.loan;
+package fr.nicolasgille.medialibs.core.advertiser;
 
 import javax.persistence.*;
 import java.util.Calendar;
@@ -29,7 +29,7 @@ import java.util.Calendar;
 public class Loan {
 
     /**
-     * Unique identifier of the loan object.
+     * Unique identifier of the advertiser object.
      *
      * @since 1.0
      */
@@ -41,8 +41,8 @@ public class Loan {
      * Identifier of the borrower.
      *
      * In fact, the borrower is must be register
-     * on the medialibs to loan object.
-     * Then we get the id to link loan and user.
+     * on the medialibs to advertiser object.
+     * Then we get the id to link advertiser and user.
      *
      * @since 1.0
      */
@@ -52,9 +52,9 @@ public class Loan {
     /**
      * Identifier of the media.
      *
-     * In fact, to loan a media, this media will previously
+     * In fact, to advertiser a media, this media will previously
      * add on medialibs system.
-     * Then, we get the media id to link loan and media.
+     * Then, we get the media id to link advertiser and media.
      *
      * @since 1.0
      */
@@ -62,7 +62,7 @@ public class Loan {
     private long mediaId;
 
     /**
-     * The start of the loan.
+     * The start of the advertiser.
      *
      * @since 1.0
      */
@@ -70,7 +70,7 @@ public class Loan {
     private Calendar startLoanDate;
 
     /**
-     * The end of the loan.
+     * The end of the advertiser.
      */
     @Temporal(value = TemporalType.DATE)
     private Calendar endLoanDate;
