@@ -26,9 +26,21 @@ import javax.transaction.Transactional;
 /**
  *
  * @since MediaLibs Core 1.0
- * @version 1.1.1
+ * @version 1.1
  */
 @Repository
 @Transactional
 public interface AdvertRepository extends JpaRepository<Advert, Long> {
+
+    /**
+     * Return the advert with precise title.
+     *
+     * @param title
+     *  Title of the advert search on system.
+     * @return
+     *  The advert found with advert.
+     * @since 1.1
+     * @version 1.0
+     */
+    Advert findByTitle(String title);
 }
