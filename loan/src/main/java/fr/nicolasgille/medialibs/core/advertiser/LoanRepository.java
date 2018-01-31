@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package fr.nicolasgille.medialibs.core.loan;
+package fr.nicolasgille.medialibs.core.advertiser;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -33,14 +33,14 @@ import javax.transaction.Transactional;
 public interface LoanRepository extends JpaRepository<Loan, Long> {
 
     /**
-     * Return loan by borrower and media id.
+     * Return advertiser by borrower and media id.
      *
      * @param borrowerId
      *  Borrower identifier.
      * @param mediaId
      *  Media identifier.
      * @return
-     *  The loan corresponding to the media and the borrower.
+     *  The advertiser corresponding to the media and the borrower.
      * @since 1.1
      */
     Loan findByBorrowerIdAndMediaId(long borrowerId, long mediaId);

@@ -30,6 +30,7 @@
 
     <!-- Module definition -->
     <modules>
+        <module>advertiser</module>
         <module>media</module>
         <module>user</module>
         <module>stock</module>
