@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package fr.nicolasgille.medialibs.core.advertiser;
+package fr.nicolasgille.medialibs.core.advert;
 
 import javax.persistence.*;
 import java.util.Calendar;
@@ -38,7 +38,7 @@ public class Advert {
     private long id;
 
     /**
-     * Identifier of the advertiser.
+     * Identifier of the advert.
      *
      * The advert must be link to an user.
      *
@@ -48,7 +48,7 @@ public class Advert {
     private long advertiserId;
 
     /**
-     * The title of the advertiser.
+     * The title of the advert.
      *
      * @since 1.0
      */

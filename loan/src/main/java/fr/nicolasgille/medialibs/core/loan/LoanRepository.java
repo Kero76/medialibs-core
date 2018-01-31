@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package fr.nicolasgille.medialibs.core.advertiser;
+package fr.nicolasgille.medialibs.core.loan;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -26,21 +26,22 @@ import javax.transaction.Transactional;
 /**
  *
  * @since MediaLibs Core 1.0
- * @version 1.1
+ * @version 1.1.1
  */
 @Repository
 @Transactional
-public interface AdvertRepository extends JpaRepository<Advert, Long> {
+public interface LoanRepository extends JpaRepository<Loan, Long> {
 
     /**
-     * Return the advert with precise title.
+     * Return Loan by borrower and media id.
      *
-     * @param title
-     *  Title of the advert search on system.
+     * @param borrowerId
+     *  Borrower identifier.
+     * @param mediaId
+     *  Media identifier.
      * @return
-     *  The advert found with advert.
+     *  The loan corresponding to the media and the borrower.
      * @since 1.1
-     * @version 1.0
      */
-    Advert findByTitle(String title);
+    Loan findByBorrowerIdAndMediaId(long borrowerId, long mediaId);
 }
