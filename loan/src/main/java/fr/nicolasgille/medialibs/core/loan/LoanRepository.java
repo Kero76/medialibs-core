@@ -33,14 +33,14 @@ import javax.transaction.Transactional;
 public interface LoanRepository extends JpaRepository<Loan, Long> {
 
     /**
-     * Return advertiser by borrower and media id.
+     * Return Loan by borrower and media id.
      *
      * @param borrowerId
      *  Borrower identifier.
      * @param mediaId
      *  Media identifier.
      * @return
-     *  The advertiser corresponding to the media and the borrower.
+     *  The loan corresponding to the media and the borrower.
      * @since 1.1
      */
     Loan findByBorrowerIdAndMediaId(long borrowerId, long mediaId);

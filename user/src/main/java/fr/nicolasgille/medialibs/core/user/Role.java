@@ -20,9 +20,9 @@ package fr.nicolasgille.medialibs.core.user;
 
 /**
  * The definition of the roles are the following :
- *  - GUEST_ROLE : It can be only advertiser media on Medialibs.
- *  - ADMIN_ROLE : It can be advertiser media, manage stocks and medias on MediaLibs.
- *  - SUPERVISOR_ROLE : It can be advertiser media, manage stocks, medias and users on MediaLibs.
+ *  - GUEST_ROLE : It can be only loan media on Medialibs.
+ *  - ADMIN_ROLE : It can be loan media, manage stocks and medias on MediaLibs.
+ *  - SUPERVISOR_ROLE : It can be loan media, manage stocks, medias and users on MediaLibs.
  *
  * @since MediaLibs Core 1.0
  * @since 1.0
