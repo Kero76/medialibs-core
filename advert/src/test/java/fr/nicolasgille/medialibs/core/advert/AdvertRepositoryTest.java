@@ -18,6 +18,8 @@
 
 package fr.nicolasgille.medialibs.core.advert;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +38,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-@Transactional(propagation = Propagation.NOT_SUPPORTED)
 public class AdvertRepositoryTest {
 
     @Autowired
@@ -45,73 +46,44 @@ public class AdvertRepositoryTest {
     @Autowired
     private AdvertRepository advertRepository;
 
-    @Test
-    public void givenAlert_whenInsert_thenGetAlertInsertPreviously() {
-        // Given
-        String content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris congue eleifend purus, " +
-                "non pretium justo cursus eget. Duis ut tincidunt nisi, et commodo libero. Cras leo massa, viverra at " +
-                "imperdiet sit amet, gravida at magna. Nunc vel risus a lectus laoreet feugiat vel sed massa. " +
-                "Nunc efficitur urna nec aliquet molestie. Nam convallis turpis ut turpis vehicula semper. " +
-                "Mauris nec ornare augue. Etiam ut nisl at est aliquam pretium non et justo. Sed id euismod erat. " +
-                "Integer non augue quis ex imperdiet sollicitudin ullamcorper a quam.";
-        Calendar now = new GregorianCalendar();
+    private final String content =
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris congue eleifend purus, " +
+            "non pretium justo cursus eget. Duis ut tincidunt nisi, et commodo libero. Cras leo massa, viverra at " +
+            "imperdiet sit amet, gravida at magna. Nunc vel risus a lectus laoreet feugiat vel sed massa. " +
+            "Nunc efficitur urna nec aliquet molestie. Nam convallis turpis ut turpis vehicula semper. " +
+            "Mauris nec ornare augue. Etiam ut nisl at est aliquam pretium non et justo. Sed id euismod erat. " +
+            "Integer non augue quis ex imperdiet sollicitudin ullamcorper a quam.";
+    private final String title = "Title";
+    private Advert advert;
 
-        Advert advert = new Advert();
-        advert.setTitle("Alert");
-        advert.setContent(content);
-        advert.setAdvertDate(now);
-
-        // When
-        Advert save = advertRepository.save(advert);
-
-        // Then
-        assertThat(save.getId()).isEqualTo(1L);
-        assertThat(save.getTitle()).isEqualTo("Alert");
-        assertThat(save.getContent()).isEqualTo(content);
-        assertThat(save.getAdvertDate()).isEqualTo(now);
-    }
-
-    @Test
-    public void givenAlert_whenFinbByEmail_thenGetAlertWithSpecificTitle() {
-        // Given
-        String content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris congue eleifend purus, " +
-                "non pretium justo cursus eget. Duis ut tincidunt nisi, et commodo libero. Cras leo massa, viverra at " +
-                "imperdiet sit amet, gravida at magna. Nunc vel risus a lectus laoreet feugiat vel sed massa. " +
-                "Nunc efficitur urna nec aliquet molestie. Nam convallis turpis ut turpis vehicula semper. " +
-                "Mauris nec ornare augue. Etiam ut nisl at est aliquam pretium non et justo. Sed id euismod erat. " +
-                "Integer non augue quis ex imperdiet sollicitudin ullamcorper a quam.";
-        String title = "Title";
-
-        Advert advert = new Advert();
+    @Before
+    public void setUp() {
+        advert = new Advert();
         advert.setTitle(title);
         advert.setContent(content);
         advert.setAdvertDate(new GregorianCalendar());
-        Advert save = advertRepository.save(advert);
 
+        entityManager.persist(advert);
+    }
+
+    @After
+    public void tearDown() {
+        entityManager.remove(advert);
+    }
+
+    @Test
+    public void whenFindByEmail_thenGetAlertWithSpecificTitle() {
         // When
         Advert find = this.advertRepository.findByTitle(title);
 
         // Then
+        assertThat(find.getId()).isEqualTo(1L);
         assertThat(find.getTitle()).isEqualTo(title);
+        assertThat(find.getContent()).isEqualTo(content);
     }
 
     @Test
-    public void givenAlert_whenFinbByEmail_thenGetNullAlert() {
-        // Given
-        String content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris congue eleifend purus, " +
-                "non pretium justo cursus eget. Duis ut tincidunt nisi, et commodo libero. Cras leo massa, viverra at " +
-                "imperdiet sit amet, gravida at magna. Nunc vel risus a lectus laoreet feugiat vel sed massa. " +
-                "Nunc efficitur urna nec aliquet molestie. Nam convallis turpis ut turpis vehicula semper. " +
-                "Mauris nec ornare augue. Etiam ut nisl at est aliquam pretium non et justo. Sed id euismod erat. " +
-                "Integer non augue quis ex imperdiet sollicitudin ullamcorper a quam.";
-        String title = "Title";
-
-        Advert advert = new Advert();
-        advert.setTitle(title);
-        advert.setContent(content);
-        advert.setAdvertDate(new GregorianCalendar());
-        Advert save = advertRepository.save(advert);
-
+    public void whenFindByEmail_thenGetNullAlert() {
         // When
         Advert find = this.advertRepository.findByTitle("My Title");
 
