@@ -72,7 +72,7 @@ public class AdvertRepositoryTest {
     }
 
     @Test
-    public void whenFindByEmail_thenGetAlertWithSpecificTitle() {
+    public void whenFindByEmail_thenGetAdvert() {
         // When
         Advert find = this.advertRepository.findByTitle(title);
 

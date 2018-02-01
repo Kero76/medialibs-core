@@ -66,7 +66,7 @@ public class MediaRepositoryTest {
     }
 
     @Test
-    public void whenFindByBorrowerAndMediaIds_thenReturnLoan() {
+    public void whenFindByNameAndReleaseDate_thenReturnMedia() {
         // When
         Media find = this.mediaRepository.findByNameAndReleaseDate(name, releaseDate);
 
@@ -81,7 +81,7 @@ public class MediaRepositoryTest {
     }
 
     @Test
-    public void whenFindByTitle_thenReturnNull() {
+    public void whenFindByNameAndReleaseDate_thenReturnNull() {
         // When
         Media find = this.mediaRepository.findByNameAndReleaseDate("My name is Bond, James Bond", releaseDate);
 
