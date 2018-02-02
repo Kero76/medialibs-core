@@ -27,7 +27,7 @@ the privileges of each people who use the MediaLibs :
 
 ## Deploy Libs
 
-To deploy automatically all librairies of the project,
+To deploy automatically all libraries of the project,
 we just use the following command `$ mvn deploy`.
 
 You can use this command on all package to deploy all libraries
